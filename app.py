@@ -18,10 +18,8 @@ import nltk
 from gensim.parsing.preprocessing import remove_stopwords
 from nltk.corpus import stopwords
 stemmer = nltk.SnowballStemmer("english")
-<<<<<<< HEAD
 
-=======
->>>>>>> 3ca5f37 (added neccesary documentations)
+
 model=pickle.load(open('model.pkl','rb'))
 
 st.set_page_config(page_title="Hate Speech Web App",page_icon="",layout="centered",initial_sidebar_state="expanded",)
@@ -29,10 +27,7 @@ st.title('Hate Speech Detection')
 st.subheader('by Oluwaseun Alagbe')
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 3ca5f37 (added neccesary documentations)
 st.markdown("""
 <style>
 body {
