@@ -11,7 +11,6 @@ import pandas as pd
 import pickle
 import streamlit as st
 import base64
-from PIL import Image
 import re
 import unicodedata
 import string
@@ -19,7 +18,10 @@ import nltk
 from gensim.parsing.preprocessing import remove_stopwords
 from nltk.corpus import stopwords
 stemmer = nltk.SnowballStemmer("english")
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3ca5f37 (added neccesary documentations)
 model=pickle.load(open('model.pkl','rb'))
 
 st.set_page_config(page_title="Hate Speech Web App",page_icon="",layout="centered",initial_sidebar_state="expanded",)
@@ -27,7 +29,10 @@ st.title('Hate Speech Detection')
 st.subheader('by Oluwaseun Alagbe')
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3ca5f37 (added neccesary documentations)
 st.markdown("""
 <style>
 body {
@@ -44,8 +49,17 @@ body {
 st.header("Hate Speech Detector")
 st.subheader("Enter the statement that you want to Detect")
 text = st.text_area("","Enter sentence", height=50)
+#Normalize Diacritics
 def simplify(text):
-    '''Function to handle the diacritics in the text'''
+    """ Function to handle the diacritics in the text
+
+    Args:
+       text (str): Data in text format must be passed
+
+
+    Returns:
+       list : a list of strings with normalize diacritics
+    """
     try:
         text = unicode(text, 'utf-8')
     except NameError:
@@ -53,6 +67,15 @@ def simplify(text):
     text = unicodedata.normalize('NFD', text).encode('ascii', 'ignore').decode("utf-8")
     return str(text)
 def filter_text(text):
+    """ Function to clean, refine and filter tweets
+
+    Args:
+       text (str): Data in text format must be passed
+
+
+    Returns:
+       list: a refined list of tweets in text format is returned
+    """
     text = re.sub(r'@\w+', '',text)
     text = re.sub(r'http\S+', '', text)
     text = str(text).lower()
@@ -66,6 +89,7 @@ def filter_text(text):
     text=" ".join(text)
     # Remove stopwords
     text = remove_stopwords(text)
+ 
     return text
     
 text = simplify(text)
@@ -85,7 +109,7 @@ if st.button("Predict"):
 
   #for index, item in enumerate(df['review']):
       #st.write(f'{item} : {q[0][index]*100}%')
-
+#For the side bar
 st.sidebar.subheader("About App")
 
 st.sidebar.info("This web app was created to Detect hate speeches from tweets")
@@ -94,7 +118,7 @@ st.sidebar.info("Click on the 'Predict' button to check whether the entered text
 st.sidebar.info("Don't forget to rate this app")
 
 
-
+#User feedback
 feedback = st.sidebar.slider('How much would you rate this app?',min_value=0,max_value=10,step=1)
 
 if feedback:
