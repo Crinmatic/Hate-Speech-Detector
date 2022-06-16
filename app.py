@@ -19,27 +19,13 @@ import nltk
 from gensim.parsing.preprocessing import remove_stopwords
 from nltk.corpus import stopwords
 stemmer = nltk.SnowballStemmer("english")
-#df = pd.read_csv('/content/drive/My Drive/amazonreviews.tsv',sep='\t')
+
 model=pickle.load(open('model.pkl','rb'))
 
 st.set_page_config(page_title="Hate Speech Web App",page_icon="",layout="centered",initial_sidebar_state="expanded",)
 st.title('Hate Speech Detection')
 st.subheader('by Oluwaseun Alagbe')
 
-
-#main_bg = "https://cdn.miscellaneoushi.com/1440x900/20121018/abstract%20technology%20hearts%201440x900%20wallpaper_www.miscellaneoushi.com_20.jpg"
-#main_bg_ext = "jpg"
-
-#st.markdown(
- #   f"""
-  #  <style>
-   # .reportview-container {{
-    #    background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
-    #}}
-    #</style>
-    #""",
-    #unsafe_allow_html=True
-#)
 
 
 st.markdown("""
